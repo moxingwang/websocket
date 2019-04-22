@@ -1,2 +1,4 @@
 # info
-GET lo
+GET localhost:8080/ws/test1/info
+
+###
