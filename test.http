@@ -1,4 +1,7 @@
 # info
 GET localhost:8080/ws/test1/info
 
+### send mesage
+GET localhost:8080/index/send/ohncgtou/哈哈哈
+
 ###

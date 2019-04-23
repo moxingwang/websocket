@@ -17,7 +17,6 @@
             function init() {
                 var stompClient = null;
                 var socket = new SockJS('http://localhost:8080/ws/test1',null,{transports:["websocket"]});
-                var socket = new SockJS('http://localhost:8080/ws/test1',null,{transports:["websocket"]});
                 // var socket = new SockJS('http://localhost:8080/ws/test1',null,{transports:["xhr-streaming"]});
                 stompClient = Stomp.over(socket);
                 stompClient.connect({

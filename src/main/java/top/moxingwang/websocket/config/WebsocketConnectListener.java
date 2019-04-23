@@ -11,7 +11,7 @@ import org.springframework.web.socket.messaging.SessionConnectEvent;
  */
 public class WebsocketConnectListener implements ApplicationListener<SessionConnectEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(WebsocketConnectListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebsocketConnectListener.class);
 
     @Override
     public void onApplicationEvent(SessionConnectEvent event) {
@@ -23,7 +23,7 @@ public class WebsocketConnectListener implements ApplicationListener<SessionConn
         //获取SessionId
         String sessionId = sha.getSessionId();
 
-        log.info("websocket建立连接{}，{}，{}", sessionId, param1, param2);
+        logger.info("websocket建立连接 {}，{}，{}", sessionId, param1, param2);
 
     }
 }
