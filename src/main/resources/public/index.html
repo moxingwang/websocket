@@ -15,8 +15,9 @@
     <script>
         $(function () {
             function init() {
-                let stompClient = null;
-                var socket = new SockJS('http://localhost:8080/ws/test1');
+                var stompClient = null;
+                // var socket = new SockJS('http://localhost:8080/ws/test1',null,{transports:["websocket"]});
+                var socket = new SockJS('http://localhost:8080/ws/test1',null,{transports:["xhr-streaming"]});
                 stompClient = Stomp.over(socket);
                 stompClient.connect({
                     param1: '8jdjuc1kio77h64d1ih7c1mul4',
@@ -26,13 +27,10 @@
 
                     });
                 });
-            }
+            };
 
             init();
         });
-    </script>
-    <script th:inline="javascript">
-        var openid = /*[[${test}]]*/;
     </script>
 </head>
 

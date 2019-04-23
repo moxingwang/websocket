@@ -10,8 +10,11 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.messaging.StompSubProtocolErrorHandler;
+import org.springframework.web.socket.server.HandshakeHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
+import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
+import org.springframework.web.socket.sockjs.transport.handler.WebSocketTransportHandler;
 
 import java.util.Map;
 
@@ -48,7 +51,14 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
                                                WebSocketHandler wsHandler, Exception exception) {
                     }
                 })
-                .withSockJS().setHeartbeatTime(25000);
+                .withSockJS()
+                .setTransportHandlers(new WebSocketTransportHandler(handshakeHandler()))//设置支持的协议，如果不设置默认全部支持
+                .setHeartbeatTime(25000);
+    }
+
+    @Bean
+    public HandshakeHandler handshakeHandler() {
+        return new DefaultHandshakeHandler();
     }
 
     /**
