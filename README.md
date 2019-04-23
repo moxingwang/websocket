@@ -1,7 +1,7 @@
 #### Quick start
 1. start WebsocketApplication
 2. open index.html
-3. view WebsocketConnectListener connect log to find sessionId
+3. view WebsocketConnectListener connect log to find out sessionId
 4. call `test.http` send message
 
 #### Reference
