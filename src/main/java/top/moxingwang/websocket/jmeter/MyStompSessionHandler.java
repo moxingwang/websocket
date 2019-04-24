@@ -25,7 +25,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
             @Override
             public void handleFrame(StompHeaders headers, Object payload) {
-                // ...
+                System.out.println(payload);
             }
 
         });
