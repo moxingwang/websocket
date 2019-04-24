@@ -14,7 +14,7 @@ import java.util.concurrent.CountDownLatch;
  * @description:
  * @author: MoXingwang 2019-04-23 19:16
  **/
-public class SocketClient {
+public class SocketClientTest {
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
