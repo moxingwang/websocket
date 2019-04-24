@@ -27,7 +27,7 @@ public class IndexContoller {
     @GetMapping(value = "send/{sessionId}/{message}")
     public void sendMessage(@PathVariable(value = "sessionId") String sessionId, @PathVariable(value = "message") String message) {
         logger.info("发送消息{}，{}", sessionId, message);
-        simpMessagingTemplate.convertAndSendToUser(sessionId, "/broker", message, createHeaders(sessionId));
+        simpMessagingTemplate.convertAndSendToUser(sessionId, "/qrPaymentBroker", message, createHeaders(sessionId));
     }
 
     /**

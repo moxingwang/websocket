@@ -15,7 +15,7 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-        session.subscribe("/trade/topic/broker", new StompFrameHandler() {
+        session.subscribe("/trade/topic/qrPaymentBroker", new StompFrameHandler() {
 
             @Override
             public Type getPayloadType(StompHeaders headers) {
