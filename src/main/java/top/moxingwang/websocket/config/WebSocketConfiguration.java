@@ -12,7 +12,9 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 import org.springframework.web.socket.messaging.StompSubProtocolErrorHandler;
 import org.springframework.web.socket.server.HandshakeHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
+import org.springframework.web.socket.server.RequestUpgradeStrategy;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
+import org.springframework.web.socket.server.standard.TomcatRequestUpgradeStrategy;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 import org.springframework.web.socket.sockjs.transport.handler.WebSocketTransportHandler;
 
@@ -31,12 +33,20 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
     /**
      * 注册stomp的端点
-     *
-     * @param stompEndpointRegistry
      */
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry stompEndpointRegistry) {
-        stompEndpointRegistry.addEndpoint("/ws/test1")
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        String endPoint = "/ws/test1";
+
+        //WebSocketClient建立连接
+        RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
+        registry.addEndpoint(endPoint)
+                .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
+                .setAllowedOrigins(domain);
+
+        //websocket js建立连接
+        registry
+                .addEndpoint(endPoint)
                 .setAllowedOrigins(domain)
                 .addInterceptors(new HandshakeInterceptor() {
                     @Override
