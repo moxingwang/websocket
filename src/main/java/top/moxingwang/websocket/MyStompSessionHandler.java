@@ -1,4 +1,4 @@
-package top.moxingwang.websocket.jmeter;
+package top.moxingwang.websocket;
 
 import org.springframework.messaging.simp.stomp.StompFrameHandler;
 import org.springframework.messaging.simp.stomp.StompHeaders;

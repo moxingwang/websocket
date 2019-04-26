@@ -1,6 +1,6 @@
 package top.moxingwang.websocket;
 
-import top.moxingwang.websocket.jmeter.WebsocketTest;
+import top.moxingwang.websocket.WebsocketTest;
 
 import java.util.concurrent.CountDownLatch;
 
